@@ -3,25 +3,83 @@
 @tailwind utilities;
 
 :root {
+  --light-theme-rgb: 1,1,1;
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-  }
+   }
+} */
+
+*{
+  box-sizing: border-box;
 }
+
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:rgb(var(--background-start-rgb));
+  overflow-x: hidden !important;
+}
+
+#clipped-path{
+  clip-path: polygon(0 0, 100% 0, 100% 76%, 0 96%);
+}
+
+.nav-icon{
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+}
+
+.nav-icon > span{
+  color: aliceblue;
+  display: block;
+  position:absolute;
+  width: 100%;
+  
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transition: .25s ease-in-out;
+}
+
+.nav-icon span:nth-child(1){
+  top:0px;
+}
+
+.nav-icon span:nth-child(2){
+  top:12px;
+
+}
+
+.nav-icon span:nth-child(3){
+  top:24px;
+}
+
+.nav-icon.open span:nth-child(1){
+  top:12px;
+  transform: rotate(135deg);
+}
+
+.nav-icon.open span:nth-child(2){
+  opacity: 0;
+  left:-35px;
+}
+
+.nav-icon.open span:nth-child(3){
+  top: 12px;
+  transform: rotate(-135deg);
+}
+
+.sidebar{
+  transition: 0.5s ease-in-out;
+}
+
+.horizontal-line{
+  color: black;
 }
